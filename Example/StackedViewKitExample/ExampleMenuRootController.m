@@ -142,6 +142,9 @@
     
     if (viewController) {
         [XAppDelegate.stackController pushViewController:viewController fromViewController:nil animated:YES];
+		if (indexPath.row == 2){
+			viewController.containerView.minScaleWidth = 300;
+		}
     }
 }
 

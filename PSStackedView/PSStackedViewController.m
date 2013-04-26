@@ -701,6 +701,34 @@ enum {
             }
         }
     }
+	
+	// Resize Controllers if they allow resizing
+	float width = [self screenWidth];
+	for (int i = 0; i < [self.viewControllers count]; i++) {
+		UIViewController *nextController = [self.viewControllers objectAtIndex:([self.viewControllers count] - i - 1)];
+		if (nextController.containerView.minScaleWidth >= nextController.containerView.width) {
+			// Skipping since size never changes
+			continue;
+		}
+		float screenWidth = nextController.containerView.width;
+		// Check to see if visible
+		if (nextController.containerView.left < width){
+			screenWidth = width - nextController.containerView.left;
+			if (screenWidth <= nextController.containerView.minScaleWidth) {
+				screenWidth = nextController.containerView.minScaleWidth;
+			}
+			if (screenWidth > nextController.containerView.width) {
+				screenWidth = nextController.containerView.width;
+			}
+		} else {
+			// Not visible make min size so does bleed under other controllers
+			screenWidth = nextController.containerView.minScaleWidth;
+		}
+		// Resize the controller in the container to the new scaled width
+		[nextController.containerView.controller.view setFrame:CGRectMake(nextController.containerView.controller.view.frame.origin.x, nextController.containerView.controller.view.frame.origin.y, screenWidth, nextController.containerView.controller.view.frame.size.height)];
+		// Current furthest left point
+		width = nextController.containerView.left;
+	}
 }
 
 - (NSArray *)visibleViewControllersSetFullyVisible:(BOOL)fullyVisible; {

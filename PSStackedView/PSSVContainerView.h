@@ -24,6 +24,7 @@ enum {
     CAGradientLayer *leftShadowLayer_;
     CAGradientLayer *innerShadowLayer_;
 	CAGradientLayer *rightShadowLayer_;
+	CGFloat minScaleWidth_;
 }
 
 + (PSSVContainerView *)containerViewWithController:(UIViewController *)controller;
@@ -57,5 +58,8 @@ enum {
 
 /// corner radius
 @property(nonatomic, assign) CGFloat cornerRadius;
+
+/// Minimum scale width
+@property(nonatomic, assign) CGFloat minScaleWidth;
 
 @end

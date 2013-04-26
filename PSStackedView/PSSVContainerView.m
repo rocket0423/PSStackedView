@@ -31,6 +31,7 @@
 @synthesize shadowWidth = shadowWidth_;
 @synthesize shadowAlpha = shadowAlpha_;
 @synthesize cornerRadius = cornerRadius_;
+@synthesize minScaleWidth = minScaleWidth_;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark private
@@ -130,6 +131,7 @@
         
         // properly embed view
         self.originalWidth = self.controller.view.width;
+		minScaleWidth_ = self.originalWidth;
         controller_.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth; 
         controller_.view.frame = CGRectMake(0, 0, controller_.view.width, controller_.view.height);
         [self addSubview:controller_.view];
