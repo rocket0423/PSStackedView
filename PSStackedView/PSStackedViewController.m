@@ -707,6 +707,8 @@ enum {
 	for (int i = 0; i < [self.viewControllers count]; i++) {
 		UIViewController *nextController = [self.viewControllers objectAtIndex:([self.viewControllers count] - i - 1)];
 		if (nextController.containerView.minScaleWidth >= nextController.containerView.width) {
+			if (nextController.containerView.left < width)
+				width = nextController.containerView.left;
 			// Skipping since size never changes
 			continue;
 		}
@@ -727,7 +729,8 @@ enum {
 		// Resize the controller in the container to the new scaled width
 		[nextController.containerView.controller.view setFrame:CGRectMake(nextController.containerView.controller.view.frame.origin.x, nextController.containerView.controller.view.frame.origin.y, screenWidth, nextController.containerView.controller.view.frame.size.height)];
 		// Current furthest left point
-		width = nextController.containerView.left;
+		if (nextController.containerView.left < width)
+			width = nextController.containerView.left;
 	}
 }
 
