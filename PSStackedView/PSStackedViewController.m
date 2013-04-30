@@ -707,14 +707,16 @@ enum {
 	for (int i = 0; i < [self.viewControllers count]; i++) {
 		UIViewController *nextController = [self.viewControllers objectAtIndex:([self.viewControllers count] - i - 1)];
 		if (nextController.containerView.minScaleWidth >= nextController.containerView.width) {
+			// Skipping since size doesn't changes
 			if (nextController.containerView.left < width)
 				width = nextController.containerView.left;
-			// Skipping since size never changes
 			continue;
 		}
 		float screenWidth = nextController.containerView.width;
 		// Check to see if visible
-		if (nextController.containerView.left < width){
+		if (width == [self screenWidth] && !nextController.containerView.allowScaleIfOffScreen) {
+			screenWidth = nextController.containerView.width;
+		} else if (nextController.containerView.left < width){
 			screenWidth = width - nextController.containerView.left;
 			if (screenWidth <= nextController.containerView.minScaleWidth) {
 				screenWidth = nextController.containerView.minScaleWidth;
@@ -1018,8 +1020,20 @@ enum {
     [self pushViewController:viewController fromViewController:self.topViewController animated:animated];
 }
 
-- (void)pushViewController:(UIViewController *)viewController fromViewController:(UIViewController *)baseViewController animated:(BOOL)animated; {    
-    // figure out where to push, and if we need to get rid of some viewControllers
+- (void)pushViewController:(UIViewController *)viewController fromViewController:(UIViewController *)baseViewController animated:(BOOL)animated; {
+	[self addViewController:viewController fromViewController:baseViewController animated:animated qued:NO];
+}
+
+- (void)queViewController:(UIViewController *)viewController animated:(BOOL)animated; {
+    [self queViewController:viewController fromViewController:self.topViewController animated:animated];
+}
+
+- (void)queViewController:(UIViewController *)viewController fromViewController:(UIViewController *)baseViewController animated:(BOOL)animated; {
+	[self addViewController:viewController fromViewController:baseViewController animated:animated qued:YES];
+}
+
+- (void)addViewController:(UIViewController *)viewController fromViewController:(UIViewController *)baseViewController animated:(BOOL)animated qued:(BOOL)qued; {
+	// figure out where to push, and if we need to get rid of some viewControllers
     if (baseViewController) {
         [self.viewControllers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             UIViewController *baseVC = objc_getAssociatedObject(obj, kPSSVAssociatedBaseViewControllerKey);
@@ -1039,7 +1053,7 @@ enum {
     }
     
     [self addChildViewController:viewController];
-    PSSVLog(@"pushing with index %d on stack: %@ (animated: %d)", [self.viewControllers count], viewController, animated);    
+    PSSVLog(@"pushing with index %d on stack: %@ (animated: %d)", [self.viewControllers count], viewController, animated);
     viewController.view.height = [self screenHeight];
 
     [viewController view]; //trigger viewDidload to ensure we get stack width
@@ -1062,8 +1076,11 @@ enum {
     
     // controller view is embedded into a container
     PSSVContainerView *container = [PSSVContainerView containerViewWithController:viewController];
-    NSUInteger leftGap = [self totalStackWidth] + [self minimalLeftInset];    
-    container.left = leftGap;
+    NSUInteger leftGap = [self totalStackWidth] + [self minimalLeftInset];
+	if (baseViewController)
+		container.left = baseViewController.containerView.right;
+    else
+		container.left = leftGap;
     container.width = viewController.view.width;
     container.autoresizingMask = UIViewAutoresizingFlexibleHeight; // width is not flexible!
     container.shadowWidth = defaultShadowWidth_;
@@ -1109,7 +1126,8 @@ enum {
     objc_setAssociatedObject(viewController, kPSSVAssociatedStackViewControllerKey, self, OBJC_ASSOCIATION_ASSIGN);
     
     [self updateViewControllerMasksAndShadow];
-    [self displayViewControllerIndexOnRightMost:[self.viewControllers count]-1 animated:animated];
+	if (!qued)
+		[self displayViewControllerIndexOnRightMost:[self.viewControllers count]-1 animated:animated];
 }
 
 - (BOOL)popViewController:(UIViewController *)controller animated:(BOOL)animated {

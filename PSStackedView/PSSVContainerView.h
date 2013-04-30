@@ -25,6 +25,7 @@ enum {
     CAGradientLayer *innerShadowLayer_;
 	CAGradientLayer *rightShadowLayer_;
 	CGFloat minScaleWidth_;
+	BOOL allowScaleIfOffScreen_;
 }
 
 + (PSSVContainerView *)containerViewWithController:(UIViewController *)controller;
@@ -61,5 +62,8 @@ enum {
 
 /// Minimum scale width
 @property(nonatomic, assign) CGFloat minScaleWidth;
+
+/// Minimum scale width
+@property(nonatomic, assign) BOOL allowScaleIfOffScreen;
 
 @end

@@ -32,6 +32,7 @@
 @synthesize shadowAlpha = shadowAlpha_;
 @synthesize cornerRadius = cornerRadius_;
 @synthesize minScaleWidth = minScaleWidth_;
+@synthesize allowScaleIfOffScreen = allowScaleIfOffScreen_;
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 #pragma mark private
@@ -134,6 +135,7 @@
 		minScaleWidth_ = self.originalWidth;
         controller_.view.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth; 
         controller_.view.frame = CGRectMake(0, 0, controller_.view.width, controller_.view.height);
+		allowScaleIfOffScreen_ = YES;
         [self addSubview:controller_.view];
         [self bringSubviewToFront:transparentView_];
     }

@@ -30,6 +30,13 @@ enum {
 /// pushes the view controller, sets the last current vc as parent controller
 - (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated;
 
+/// Has no effect if the view controller is already in the stack.
+/// baseViewController is used to remove subviews if a previous controller invokes a new view. can be nil.
+- (void)queViewController:(UIViewController *)viewController fromViewController:(UIViewController *)baseViewController animated:(BOOL)animated;
+
+/// pushes the view controller, places the view countroller on the stack but does not show
+- (void)queViewController:(UIViewController *)viewController animated:(BOOL)animated;
+
 /// remove top view controller from stack, return it
 - (UIViewController *)popViewControllerAnimated:(BOOL)animated;
 
@@ -69,6 +76,8 @@ enum {
 /// expand stack until root view is shown
 - (void)displayRootViewControllerAnimated:(BOOL)animated;
 
+// reloads all the shadows and scales views
+- (void)updateViewControllerMasksAndShadow;
 
 /// return view controllers that follow a certain view controller. Helper function.
 - (NSArray *)viewControllersAfterViewController:(UIViewController *)viewController;

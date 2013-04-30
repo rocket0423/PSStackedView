@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BD74D85A172F41AE00C27808 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD74D855172F41AE00C27808 /* MainViewController.m */; };
+		BD74D85B172F41AE00C27808 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD74D857172F41AE00C27808 /* DetailViewController.m */; };
+		BD74D85C172F41AE00C27808 /* SubDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BD74D859172F41AE00C27808 /* SubDetailViewController.m */; };
 		E23C175115217912007A3611 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E23C175015217912007A3611 /* UIKit.framework */; };
 		E23C175315217912007A3611 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E23C175215217912007A3611 /* Foundation.framework */; };
 		E23C175515217912007A3611 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E23C175415217912007A3611 /* CoreGraphics.framework */; };
@@ -27,6 +30,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BD74D854172F41AE00C27808 /* MainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		BD74D855172F41AE00C27808 /* MainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		BD74D856172F41AE00C27808 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		BD74D857172F41AE00C27808 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		BD74D858172F41AE00C27808 /* SubDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SubDetailViewController.h; sourceTree = "<group>"; };
+		BD74D859172F41AE00C27808 /* SubDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SubDetailViewController.m; sourceTree = "<group>"; };
 		E23C174C15217912007A3611 /* PSStackedStoryboardExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PSStackedStoryboardExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E23C175015217912007A3611 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		E23C175215217912007A3611 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -113,6 +122,12 @@
 				E23C176815217912007A3611 /* PSViewController.h */,
 				E23C176915217912007A3611 /* PSViewController.m */,
 				E23C178D15217C34007A3611 /* PSViewController.xib */,
+				BD74D854172F41AE00C27808 /* MainViewController.h */,
+				BD74D855172F41AE00C27808 /* MainViewController.m */,
+				BD74D856172F41AE00C27808 /* DetailViewController.h */,
+				BD74D857172F41AE00C27808 /* DetailViewController.m */,
+				BD74D858172F41AE00C27808 /* SubDetailViewController.h */,
+				BD74D859172F41AE00C27808 /* SubDetailViewController.m */,
 				E23C175715217912007A3611 /* Supporting Files */,
 			);
 			path = PSStackedStoryboardExample;
@@ -225,6 +240,9 @@
 				E23C178815217A04007A3611 /* PSSVContainerView.m in Sources */,
 				E23C178915217A04007A3611 /* UIView+PSSizes.m in Sources */,
 				E23C178A15217A04007A3611 /* UIViewController+PSStackedView.m in Sources */,
+				BD74D85A172F41AE00C27808 /* MainViewController.m in Sources */,
+				BD74D85B172F41AE00C27808 /* DetailViewController.m in Sources */,
+				BD74D85C172F41AE00C27808 /* SubDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
