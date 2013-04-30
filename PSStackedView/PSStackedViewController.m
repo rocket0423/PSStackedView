@@ -261,10 +261,9 @@ typedef void(^PSSVSimpleBlock)(void);
     return screenWidth;
 }
 
+// Use the view height to allow for adjustubal height
 - (CGFloat)screenHeight {
-    CGRect viewRect = [self viewRect];
-    NSUInteger screenHeight = PSIsLandscape() ? viewRect.size.width : viewRect.size.height;
-    return screenHeight;
+    return self.view.frame.size.height;
 }
 
 - (CGFloat)maxControllerWidth {
