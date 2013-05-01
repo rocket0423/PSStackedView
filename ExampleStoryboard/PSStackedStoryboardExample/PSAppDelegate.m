@@ -16,18 +16,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
-		UIViewController *menuController = [storyboard instantiateViewControllerWithIdentifier:@"MenuViewController"];
-		PSStackedViewController *stackController = [[PSStackedViewController alloc] initWithRootViewController:menuController];
-		UIViewController *collectionView = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
-		
-		[stackController setEnableBounces:NO];
-		[stackController setLeftInset:0];
-		[stackController setLargeLeftInset:320];
-		[stackController pushViewController:collectionView animated:NO];
-		[self.window setRootViewController:stackController];
-	}
     return YES;
 }
 							

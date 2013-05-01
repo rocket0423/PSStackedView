@@ -51,14 +51,14 @@
 	if (UIInterfaceOrientationIsLandscape([self interfaceOrientation])){
 		if (fromInterfaceOrientation != [self interfaceOrientation] && [[self stackController] firstVisibleIndex] == 2 && [[self stackController] lastVisibleIndex] == 2)
 			orgin = orgin + 65;
-		[self.containerView setFrame:CGRectMake(orgin, 0, 703, [[UIScreen mainScreen] bounds].size.height)];
-		[self.view setFrame:CGRectMake(0, 0, 703, [[UIScreen mainScreen] bounds].size.height)];
+		[self.containerView setFrame:CGRectMake(orgin, 0, 703, self.view.frame.size.height)];
+		[self.view setFrame:CGRectMake(0, 0, 703, self.view.frame.size.height)];
 		self.containerView.minScaleWidth = 703;
 	} else {
 		if (fromInterfaceOrientation != [self interfaceOrientation] && [[self stackController] firstVisibleIndex] == 2 && [[self stackController] lastVisibleIndex] == 2)
 			orgin = orgin - 65;
-		[self.containerView setFrame:CGRectMake(orgin, 0, 768, [[UIScreen mainScreen] bounds].size.height)];
-		[self.view setFrame:CGRectMake(0, 0, 768, [[UIScreen mainScreen] bounds].size.height)];
+		[self.containerView setFrame:CGRectMake(orgin, 0, 768, self.view.frame.size.height)];
+		[self.view setFrame:CGRectMake(0, 0, 768, self.view.frame.size.height)];
 		self.containerView.minScaleWidth = 448;
 	}
 	[[self stackController] updateViewControllerMasksAndShadow];

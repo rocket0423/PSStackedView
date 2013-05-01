@@ -49,10 +49,10 @@
 - (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
 	[super didRotateFromInterfaceOrientation:fromInterfaceOrientation];
 	if (UIInterfaceOrientationIsLandscape([self interfaceOrientation])){
-		[self.view setFrame:CGRectMake(0, 0, 1024, [[UIScreen mainScreen] bounds].size.height)];
+		[self.view setFrame:CGRectMake(0, 0, 1024, self.view.frame.size.height)];
 		self.containerView.minScaleWidth = 703;
 	} else {
-		[self.view setFrame:CGRectMake(0, 0, 768, [[UIScreen mainScreen] bounds].size.height)];
+		[self.view setFrame:CGRectMake(0, 0, 768, self.view.frame.size.height)];
 		self.containerView.minScaleWidth = 448;
 	}
 	[[self stackController] updateViewControllerMasksAndShadow];

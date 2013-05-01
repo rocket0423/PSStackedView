@@ -28,8 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
-	[self.view setFrame:CGRectMake(0, 0, 320, [[UIScreen mainScreen] bounds].size.height)];
+	[self.view setFrame:CGRectMake(0, 0, 320, self.view.frame.size.height)];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
