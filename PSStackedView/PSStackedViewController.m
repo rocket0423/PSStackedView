@@ -261,7 +261,7 @@ typedef void(^PSSVSimpleBlock)(void);
     return screenWidth;
 }
 
-// Use the view height to allow for adjustubal height
+// Use the view height to allow for adjustable height
 - (CGFloat)screenHeight {
     return self.view.frame.size.height;
 }
