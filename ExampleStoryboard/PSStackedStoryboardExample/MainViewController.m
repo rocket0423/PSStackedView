@@ -58,4 +58,13 @@
 	[[self stackController] updateViewControllerMasksAndShadow];
 }
 
+- (void)viewDidUnload {;
+    [super viewDidUnload];
+}
+- (IBAction)replaceAction:(id)sender {
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPad" bundle:nil];
+	UIViewController *collectionView = [storyboard instantiateViewControllerWithIdentifier:@"MainViewController"];
+	[[self stackController] pushViewController:collectionView fromViewController:[[self stackController] rootViewController] animated:YES];
+	
+}
 @end

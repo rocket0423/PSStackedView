@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MainViewController : UIViewController
+- (IBAction)replaceAction:(id)sender;
 
 @end

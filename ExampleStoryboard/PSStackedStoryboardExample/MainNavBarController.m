@@ -36,7 +36,8 @@
 	[stackController setEnableBounces:NO];
 	[stackController setLeftInset:0];
 	[stackController setLargeLeftInset:320];
-	[stackController pushViewController:collectionView animated:NO];
+	// Setting the from view controller to the root view controller allows you to replace the first view controller
+	[stackController pushViewController:collectionView fromViewController:[stackController rootViewController] animated:NO];
 	[stackController.view setFrame:CGRectMake(0, 0, mainContainer.frame.size.width, mainContainer.frame.size.height)];
 	[mainContainer addSubview:stackController.view];
 	[self addChildViewController:stackController];
